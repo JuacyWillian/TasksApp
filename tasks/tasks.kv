@@ -1,0 +1,148 @@
+#:kivy 1.10.1
+
+#:import hexColor kivy.utils.get_color_from_hex
+#:import dp kivy.metrics.dp
+#:import NavigationLayout kivymd.navigationdrawer
+#:import MDNavigationDrawer kivymd.navigationdrawer
+#:import NavigationDrawerIconButton kivymd.navigationdrawer
+#:import NavigationDrawerToolbar kivymd.navigationdrawer
+#:import Toolbar kivymd.toolbar
+#:import MDLabel kivymd.label
+#:import MDFloatingActionButton kivymd.button
+#:import MDTextField kivymd.textfields
+#:import MDCheckbox kivymd.selectioncontrols
+
+
+<NavigationDrawerHeader>:
+    size_hint: 1, None
+    height: 200
+    AsyncImage:
+        source: root.source
+        pos: 0,0
+        size: root.size
+
+    MDLabel:
+        text: root.title
+        font_style: 'Title'
+        size_hint: 1, None
+        height: self.texture_size[1]
+        padding: 10, 10
+        pos: 15, 25
+        theme_text_color: 'Custom'
+        text_color: root.title_color
+
+    MDLabel:
+        text: root.subtitle
+        font_style: 'Subhead'
+        theme_text_color: 'Custom'
+        text_color: root.subtitle_color
+        size_hint: 1, None
+        height: self.texture_size[1]
+        padding: 10, 10
+        pos: 15, 0
+
+    AsyncImage:
+        source: root.avatar if root.avatar else 'data/avatar_default.jpg'
+        pos: 25, 75
+        size_hint: None, None
+        size: 100, 100
+        padding: 10, 10
+        canvas:
+            Clear
+            Color:
+                rgba: 1,1,1,1
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [100]
+                texture: self.texture
+
+            Color:
+                rgba: root.avatar_circle_color
+            SmoothLine:
+                circle: self.center_x, self.center_y, self.width//2
+
+<IconLeftSampleWidget>:
+<IconRightSampleWidget>:
+<NewTaskDialog>:
+    title: "New Task"
+    size_hint: .8, .75
+    # height: self.content.height
+    auto_dismiss: True
+    BoxLayout:
+        orientation:'vertical'
+        size_hint: 1, None
+        height: self.minimum_height
+
+        MDTextField:
+            id: task_name
+            hint_text: "Task Name"
+            required: True
+            helper_text_mode: "on_error"
+        MDTextField:
+            id: task_body
+            hint_text: "Task Description"
+            required: True
+            helper_text_mode: "on_error"
+
+        BoxLayout:
+            size_hint: 1, None
+            height: self.minimum_height
+            MDCheckbox:
+                id: task_finished
+                size_hint: None, None
+                size: dp(48), dp(48)
+                pos_hint: {'center_x': 0.25, 'center_y': 0.5}
+            MDLabel:
+                font_style: 'Body1'
+                text: "finished"
+                size_hint: 1, 1
+                # height: self.texture_size[1]
+
+        MDTextField:
+            id: task_date
+            hint_text: "Task Date"
+            on_focus: root.show_date_picker()
+
+        MDTextField:
+            id: task_tag
+            hint_text: "Task Flag"
+
+
+<TaskListItem>:
+
+<HomeScreen>:
+    MDFloatingActionButton:
+        icon: 'plus'
+        pos_hint: {'right': .95, 'y': .05}
+        on_release: root.show_new_task_dialog()
+
+<TaskEditScreen>:
+
+NavigationLayout:
+    id: nav_layout
+    MDNavigationDrawer:
+        id: drawer
+        NavigationDrawerHeader:
+            title: app.get_application_name()
+
+
+        NavigationDrawerIconButton:
+            icon: 'home'
+            text: 'Home'
+            on_release: manager.current = 'home'
+
+    BoxLayout:
+        orientation: 'vertical'
+        Toolbar:
+            id: toolbar
+            title: app.get_application_name()
+            md_bg_color: app.theme_cls.primary_color
+            left_action_items: [['menu', lambda *x: nav_layout.toggle_nav_drawer()]]
+
+        ScreenManager:
+            id: manager
+            HomeScreen:
+                name: 'home'
+            TaskEditScreen:
+                name: 'task-edit'
