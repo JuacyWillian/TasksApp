@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from kivy.event import EventDispatcher
 from kivy.properties import *
 
@@ -9,6 +10,28 @@ class Task(EventDispatcher):
     finished = BooleanProperty(False)
     date = ObjectProperty(None)
     tag = StringProperty('')
+
+    __tasks = []
+
+    @classmethod
+    def getAll(cls, ):
+        return cls.__tasks
+
+    @classmethod
+    def getById(cls, id: int):
+        return cls.__tasks[id]
+
+    @classmethod
+    def insert(cls, task):
+        cls.__tasks.append(task)
+
+    @classmethod
+    def update(cls, id: int, task):
+        cls.__tasks = [t for t in cls.__tasks if cls.__tasks.index(t) != id]
+
+    @classmethod
+    def remove(cls, id: int):
+        cls.__tasks.remove(id)
 
     def __init__(self, title, body, **kwargs):
         super(Task, self).__init__()

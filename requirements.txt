@@ -1,3 +1,4 @@
 cython==0.28.2
 kivy==1.10.1
 git+https://gitlab.com/kivymd/KivyMD.git
+pillow

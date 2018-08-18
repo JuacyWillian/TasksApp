@@ -91,10 +91,10 @@ class TaskList(MDList):
 
 class HomeScreen(Screen):
     tasks_list = ListProperty([])
+    tasks = ObjectProperty(None)
 
     def __init__(self, **kwargs):
         super(HomeScreen, self).__init__(**kwargs)
-        self.tasks_list = task_list
 
     def on_tasks_list(self, *args):
         self.load_tasks()
@@ -102,13 +102,16 @@ class HomeScreen(Screen):
     def on_enter(self,):
         scroll = ScrollView(do_scroll_x=False)
         self.tasks = TaskList([], id='taskList')
+
+        self.tasks_list = Task.getAll()
         scroll.add_widget(self.tasks)
         self.add_widget(scroll)
 
     def load_tasks(self, ):
-        self.tasks.clear_widgets()
-        for t in self.tasks_list:
-            self.tasks.add_task(t)
+        if self.tasks:
+            self.tasks.clear_widgets()
+            for t in self.tasks_list:
+                self.tasks.add_task(t)
 
     def show_new_task_dialog(self, *args):
         dialog = NewTaskDialog()
