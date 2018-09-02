@@ -1,11 +1,9 @@
 from kivy.lang import Builder
-from kivy.properties import *
-from kivy.uix.relativelayout import RelativeLayout
-from kivymd.button import *
+from kivy.properties import StringProperty
+from kivymd.button import MDIconButton
 from kivymd.label import MDLabel
-from kivymd.list import *
-from kivymd.navigationdrawer import *
-
+from kivymd.list import IRightBodyTouch
+from kivymd.navigationdrawer import ILeftBody
 
 Builder.load_string("""
 <IconLeftSampleWidget>:
@@ -30,7 +28,6 @@ class MDIcon(MDLabel):
 class IconLeftSampleWidget(ILeftBody, MDIconButton):
     def __init__(self, task, **kwargs):
         super().__init__(**kwargs)
-
         self.icon = f"checkbox-{'marked' if task.finished else 'blank'}-outline"
 
 

@@ -1,44 +1,39 @@
 #:kivy 1.10.1
-
-#:import hexColor kivy.utils.get_color_from_hex
-#:import dp kivy.metrics.dp
 #:import NavigationLayout kivymd.navigationdrawer
 #:import MDNavigationDrawer kivymd.navigationdrawer
 #:import NavigationDrawerIconButton kivymd.navigationdrawer
-#:import NavigationDrawerToolbar kivymd.navigationdrawer
-#:import Toolbar kivymd.toolbar
-#:import MDLabel kivymd.label
-#:import MDFloatingActionButton kivymd.button
-#:import MDTextField kivymd.textfields
-#:import MDCheckbox kivymd.selectioncontrols
 
 #:import NavigationDrawerHeader tasks.components
+#:import toolbar tasks.components.toolbar
+#:import SplashScreen tasks.screens
 #:import HomeScreen tasks.screens
-#:import TaskEditScreen tasks.screens
+# :import TaskEditScreen tasks.screens
 
+<SplashScreen>:
+    # background_color:
+    # logo:
 
 NavigationLayout:
     id: nav_layout
     MDNavigationDrawer:
         id: drawer
+
         NavigationDrawerHeader:
             title: app.get_application_name()
+
         NavigationDrawerIconButton:
             icon: 'home'
             text: 'Home'
             on_release: manager.current = 'home'
     BoxLayout:
         orientation: 'vertical'
-        Toolbar:
-            id: toolbar
+        toolbar:
             title: app.get_application_name()
             md_bg_color: app.theme_cls.primary_color
             left_action_items: [['menu', lambda *x: nav_layout.toggle_nav_drawer()]]
-
         ScreenManager:
             id: manager
+            SplashScreen:
+                name: 'splash'
             HomeScreen:
                 name: 'home'
-
-            TaskEditScreen:
-                name: 'task-edit'

@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from peewee import *
 
 db = SqliteDatabase('data/database/tasks.db')
@@ -22,6 +20,4 @@ class Task(BaseModel):
     tag = CharField()
 
 
-db.connect()
-db.create_tables([Task, Person])
-db.close()
+table_list = [Task, Person]
