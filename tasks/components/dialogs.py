@@ -3,13 +3,12 @@ from kivy.properties import ObjectProperty
 from kivymd.date_picker import MDDatePicker
 from kivymd.dialog import MDDialog
 
-from ..models import Task
+from tasks.models import db, Task
 
 Builder.load_string("""
 #:import MDTextField kivymd.textfields
 #:import MDCheckbox kivymd.selectioncontrols
 #:import MDLabel kivymd.label
-
 
 <EditTaskDialog>:
     title: "New Task"

@@ -6,7 +6,7 @@ from kivymd.elevationbehavior import RectangularElevationBehavior
 from kivymd.navigationdrawer import NavigationDrawerHeaderBase
 from kivymd.theming import ThemableBehavior
 
-navdrawer_kv = """
+Builder.load_string("""
 #:import MDLabel kivymd.label
 
 <NavigationDrawerHeader>:
@@ -20,6 +20,11 @@ navdrawer_kv = """
                 pos: self.pos
                 size: self.size
                 source: self.source if root.background_image else None
+
+            Color:
+                rgba: 0, 0, 0, .5
+            Line:
+                points: self.x, self.y, self.right, self.y
         source: root.background_image
         pos: 0,0
         size: root.size
@@ -43,6 +48,10 @@ navdrawer_kv = """
         height: self.texture_size[1]
         padding: 10, 10
         pos: 15, 0
+        markup: True
+        on_ref_press:
+            import webbrowser
+            webbrowser.open(args[1])
 
     AsyncImage:
         source: root.avatar if root.avatar else 'data/image/avatar_default.jpg'
@@ -64,12 +73,12 @@ navdrawer_kv = """
                 rgba: root.avatar_circle_color
             SmoothLine:
                 circle: self.center_x, self.center_y, self.width//2
-"""
+""")
 
 
 class NavigationDrawerHeader(
-    RelativeLayout, ThemableBehavior,
-    RectangularElevationBehavior, NavigationDrawerHeaderBase):
+        RelativeLayout, ThemableBehavior,
+        RectangularElevationBehavior, NavigationDrawerHeaderBase):
     title = StringProperty('')
     title_color = ListProperty([1, 1, 1, 1])
 
@@ -83,7 +92,6 @@ class NavigationDrawerHeader(
     avatar_circle_color = ListProperty([1, 1, 1, 1])
 
     def __init__(self, **kw):
-        super().__init__(**kw)
-        Builder.load_string(navdrawer_kv)
+        super(NavigationDrawerHeader, self).__init__(**kw)
         self.title = App.get_running_app().get_application_name()
         self.subtitle = 'juacy.willian@gmail.com'

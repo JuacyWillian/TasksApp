@@ -1,12 +1,10 @@
-
+from tasks import TasksApp
 try:
     import kivy
     kivy.require('1.10.1')
 
-    from tasks.tasksapp import tasks_app
-
     if __name__ == "__main__":
-        tasks_app.run()
+        TasksApp().run()
 
 except Exception as ex:
     import logging

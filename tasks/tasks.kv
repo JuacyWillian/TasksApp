@@ -1,17 +1,27 @@
 #:kivy 1.10.1
+#:import hexColor kivy.utils.get_color_from_hex
+
 #:import NavigationLayout kivymd.navigationdrawer
 #:import MDNavigationDrawer kivymd.navigationdrawer
 #:import NavigationDrawerIconButton kivymd.navigationdrawer
+#:import Toolbar kivymd.toolbar
 
 #:import NavigationDrawerHeader tasks.components
-#:import toolbar tasks.components.toolbar
-#:import SplashScreen tasks.screens
-#:import HomeScreen tasks.screens
-# :import TaskEditScreen tasks.screens
 
-<SplashScreen>:
-    # background_color:
-    # logo:
+
+<NavigationDrawerHeader>:
+    title: app.get_application_name()
+    # title_color: ''
+
+    subtitle: '[ref=http://juacywillian.github.io/tasks]official site.[/ref]'
+    # subtitle_color: ''
+
+    background_image: ''
+    background_color: hexColor("#286654")
+
+    # avatar: ''
+    # avatar_circle_color: ''
+
 
 NavigationLayout:
     id: nav_layout
@@ -27,13 +37,10 @@ NavigationLayout:
             on_release: manager.current = 'home'
     BoxLayout:
         orientation: 'vertical'
-        toolbar:
+        Toolbar:
+            id: toolbar
             title: app.get_application_name()
             md_bg_color: app.theme_cls.primary_color
             left_action_items: [['menu', lambda *x: nav_layout.toggle_nav_drawer()]]
         ScreenManager:
             id: manager
-            SplashScreen:
-                name: 'splash'
-            HomeScreen:
-                name: 'home'

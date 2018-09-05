@@ -1,11 +1,13 @@
+from kivy.app import App
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.properties import ListProperty, StringProperty
+from kivy.properties import ListProperty, ObjectProperty, StringProperty
+from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import FadeTransition
 
-from . import BaseScreen
+# from tasks.screens import RootLayout
 
-splash_kv = """
+Builder.load_string("""
 <SplashScreen>:
     canvas:
         Color:
@@ -21,17 +23,19 @@ splash_kv = """
         size_hint: 1, 1
         keep_ratio: True
         allow_strech: False
-"""
+""")
 
 
-class SplashScreen(BaseScreen):
+class SplashScreen(FloatLayout):
+    app = ObjectProperty(None)
     background_color = ListProperty([0, 0, 0, 1])
     logo = StringProperty('data/image/splash2.png')
 
-    def on_enter(self, ):
-        Builder.load_string(splash_kv)
+    def __init__(self, **kwargs):
+        super(SplashScreen, self). __init__(**kwargs)
+        self.app = App.get_running_app()
         Clock.schedule_once(self.goto_home, 10 if self.logo else 1)
 
     def goto_home(self, *args):
-        self.manager.transition = FadeTransition()
-        self.manager.current = 'home'
+        root = RootLayout()
+        self.app.root = root
