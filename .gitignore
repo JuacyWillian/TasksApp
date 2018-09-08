@@ -64,3 +64,6 @@ docs/_build/
 
 # sqlite
 *.db
+*.database
+*.sqlite
+*.sqlite3
