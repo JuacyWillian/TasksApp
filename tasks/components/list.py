@@ -1,9 +1,10 @@
 from kivy.lang import Builder
-from kivy.properties import ListProperty, ObjectProperty
+from kivy.properties import ObjectProperty
 from kivymd.list import MDList, TwoLineIconListItem
 
 from tasks.components.widgets import IconLeftSampleWidget
-from tasks.models import Task
+from tasks.models import Task, db
+
 
 Builder.load_string("""
 <TaskList>:

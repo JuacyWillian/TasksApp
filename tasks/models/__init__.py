@@ -1,4 +1,4 @@
-from peewee import *
+from peewee import SqliteDatabase, Model, CharField, DateField, BooleanField
 
 db = SqliteDatabase('data/database/tasks.db')
 

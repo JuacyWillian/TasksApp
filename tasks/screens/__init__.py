@@ -1,16 +1,11 @@
+from enum import Enum
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import Screen
 from kivymd.navigationdrawer import NavigationLayout
 
-Builder.load_string("""
-""")
-
-
-# class RootLayout(NavigationLayout):
-#     def __init__(self, **kwargs):
-#         super(RootLayout, self).__init__(**kwargs)
+SCREENS_TYPE = Enum('Screens', 'HOME EDIT ABOUT')
 
 
 class BaseScreen(Screen):
@@ -33,6 +28,12 @@ class BaseScreen(Screen):
         super(BaseScreen, self).on_leave(*args)
 
 
-# from tasks.screens.splash_screen import SplashScreen
+from tasks.screens.about_screen import AboutScreen
 from tasks.screens.home_screen import HomeScreen
 from tasks.screens.task_edit_screen import TaskEditScreen
+
+SCREEN_LIST = {
+    SCREENS_TYPE.HOME: HomeScreen,
+    SCREENS_TYPE.EDIT: TaskEditScreen,
+    SCREENS_TYPE.ABOUT: AboutScreen
+}
