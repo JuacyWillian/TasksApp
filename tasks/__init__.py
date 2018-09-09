@@ -31,11 +31,10 @@ class TasksApp(App):
 
 Mé faiz elementum girarzis, nisi eros vermeio. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Detraxit consequat et quo num tendi nada. Delegadis gente finis, bibendum egestas augue arcu ut est. '''
         self.version = '0.01'
-        self.developers = []
+        self.developers = ['Juacy Willian']
         self.website = 'http://juacywillian.github.io/tasks'
 
     def build(self):
-        # self.root.ids.manager.transition = RiseInTransition()
         self.goto(SCREENS_TYPE.HOME)
         return self.root
 
