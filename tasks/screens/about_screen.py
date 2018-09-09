@@ -59,12 +59,15 @@ Builder.load_string("""
                 padding: 10, 10
 
             MDLabel:
-                text: f'[b]Developers:[/b] {", ".join(app.developers)}'
+                text: '[b]Developers:[/b] \\n %s'%(", ".join(['[ref='+d[1]+']'+d[0]+'[/ref]' for d in app.developers]))
                 size_hint_y: None
                 height: self.texture_size[1]
                 font_style: 'Body1'
                 markup: True
                 padding: 10, 10
+                on_ref_press:
+                    import webbrowser
+                    webbrowser.open(args[1])
 
             MDLabel:
                 text: f'website: [ref={app.website}]{app.website}[/ref]'

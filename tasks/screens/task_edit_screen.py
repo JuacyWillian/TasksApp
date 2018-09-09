@@ -82,7 +82,7 @@ class TaskEditScreen(BaseScreen):
             self.ids.task_finished.active = self.task.finished
 
     def on_toolbar(self, *args):
-        self.toolbar.title = 'Edit Task'
+        self.toolbar.title = 'Edit Task' if self.task else 'New Task'
         self.toolbar.left_action_items = [
             ['arrow-left', lambda x: self.app.goto(SCREENS_TYPE.HOME)]
         ]

@@ -26,11 +26,13 @@ class TasksApp(App):
             db.create_tables(table_list)
 
         self.logo = 'data/image/logo.png'
-        self.description = '''Mussum Ipsum, cacilds vidis litro abertis. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Manduma pindureta quium dia nois paga. In elementis mé pra quem é amistosis quis leo. Copo furadis é disculpa de bebadis, arcu quam euismod magna.
+        self.description = '''Tasks é um aplicativo simples que ajuda o usuário a organizar o seu dia-a-dia listando as tarefas a serem realizadas e as que já foram completadas.
 
-        Mé faiz elementum girarzis, nisi eros vermeio. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Detraxit consequat et quo num tendi nada. Delegadis gente finis, bibendum egestas augue arcu ut est. '''
+        O aplicativo foi construido usando Python como linguagem de programação, Kivy como Framework GUI multiplataforma, KivyMD como tema de acordo com os padrões do Material Design do Google e Peewee para facilitar o acesso ao banco de dados SQLite.'''
         self.version = '0.01'
-        self.developers = ['Juacy Willian']
+        self.developers = [
+            ('Juacy Willian', 'http://twitter.com/juacywillian'),
+        ]
         self.website = 'http://juacywillian.github.io/tasks'
 
     def build(self):

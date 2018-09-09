@@ -58,15 +58,16 @@ class HomeScreen(BaseScreen):
         self.toolbar.left_action_items = []
         self.toolbar.right_action_items = [
             ['plus', lambda x: self.app.goto(SCREENS_TYPE.EDIT)],
-            ['dots-vertical', self.show_tb_menu]
+            # ['dots-vertical', self.show_tb_menu]
+            ['information-outline', lambda x: self.app.goto(SCREENS_TYPE.ABOUT)]
         ]
 
     def show_tb_menu(self, button):
         menu_items = [
-            {'viewclass': 'MDMenuItem', 'text': 'sort',
-             'on_release': lambda: self.show_sort_menu()},
-            {'viewclass': 'MDMenuItem', 'text': 'filter',
-             'on_release': lambda: self.show_filter_menu()},
+            # {'viewclass': 'MDMenuItem', 'text': 'sort',
+            #  'on_release': lambda: self.show_sort_menu()},
+            # {'viewclass': 'MDMenuItem', 'text': 'filter',
+            #  'on_release': lambda: self.show_filter_menu()},
             {'viewclass': 'MDMenuItem', 'text': 'about',
              'on_release': lambda: self.app.goto(SCREENS_TYPE.ABOUT)},
         ]
