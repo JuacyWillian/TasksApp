@@ -18,6 +18,8 @@ O aplicativo foi construido usando Python como linguagem de programação, Kivy 
 * filter tasks
 * sort tasks
 * hidden older completed tasks
+* background task
+* notification system
 * user settings
 * i18n support
 * l10n support
