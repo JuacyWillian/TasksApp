@@ -1,6 +1,6 @@
 import re
 from datetime import date, datetime
-
+import calendar
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
@@ -63,6 +63,7 @@ Builder.load_string("""
 
 class TaskEditScreen(BaseScreen):
     task = ObjectProperty(None)
+    dialog = ObjectProperty(None)
 
     def __init__(self, task=None, **kwargs):
         super(TaskEditScreen, self).__init__(**kwargs)
@@ -129,24 +130,31 @@ class TaskEditScreen(BaseScreen):
             padding=(10, 10),
             theme_text_color='Error'
         )
-        dialog = MDDialog(
+        self.dialog = MDDialog(
             title='Errors',
             content=content,
             size_hint=(.75, .5))
-        dialog.add_action_button('close', dialog.dismiss)
-        dialog.open()
+        self.dialog.add_action_button('close', self.dialog.dismiss)
+        self.dialog.open()
 
     def show_date_picker(self, date=""):
         def set_previous_date(date):
             self.ids.task_date.text = str(date)
+            try:
+                self.dialog.dismiss()
+            except:
+                pass
+            self.dialog = None
+
+        self.dialog = MDDatePicker(
+            set_previous_date, firstweekday=calendar.SUNDAY,
+            auto_dismiss=False).open()
 
         try:
             year, month, day = [int(i) for i in date.split('-')]
-            MDDatePicker(set_previous_date, year, month, day,
-                         firstweekday=6, auto_dismiss=True).open()
+            self.dialog.set_date()
         except:
-            MDDatePicker(set_previous_date, firstweekday=6,
-                         auto_dismiss=True).open()
+            pass
 
     def edit_task(self, **values):
         with db:
