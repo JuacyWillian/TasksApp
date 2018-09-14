@@ -1,0 +1,168 @@
+# Check configuration tokens
+# Ensure build layout
+# Check configuration tokens
+# Preparing build
+# Check requirements for android
+# Run 'dpkg --version'
+# Cwd None
+b"Debian 'dpkg' package management program version 1.18.25 (amd64).\nThis is free software; see the GNU General Public License version 2 or\nlater for copying conditions. There is NO warranty.\n"# Search for Git (git)
+#  -> found at /usr/bin/git
+# Search for Cython (cython)
+#  -> found at /usr/local/bin/cython
+# Search for Java compiler (javac)
+#  -> found at /usr/lib/jvm/java-8-openjdk-amd64/bin/javac
+# Search for Java keytool (keytool)
+#  -> found at /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/keytool
+# Install platform
+# Run 'pip install -q --user "appdirs" "colorama>=0.3.3" "sh>=1.10,<1.12.5" "jinja2" "six"'
+# Cwd None
+# Apache ANT found at /home/kivy/.buildozer/android/platform/apache-ant-1.9.4
+# Android SDK found at /home/kivy/.buildozer/android/platform/android-sdk-20
+# Android NDK found at /opt/crystax-ndk-10.3.2
+# Check application requirements
+# Check garden requirements
+# Compile platform
+# Run '/usr/local/bin/python -m pythonforandroid.toolchain create --dist_name=tasks --bootstrap=sdl2 --requirements=python3crystax,kivy==master,git+https://gitlab.com/kivymd/KivyMD.git,sqlite3,peewee,pillow --arch armeabi-v7a --copy-libs --color=always --storage-dir="/home/kivy/android/platform/build"'
+# Cwd /home/kivy/android/platform/python-for-android-new-toolchain
+
+working: SDL2_image-2.0.1.tar.gz
+working: SDL2_mixer-2.0.1.tar.gz
+working: SDL2_ttf-2.0.14.tar.gz
+working: sqlite-amalgamation-3150100.zip
+working: SDL2-2.0.4.tar.gz
+working: six-1.9.0.tar.gz
+working: master.zip
+working: master.zip
+working: SDL2_image-2.0.1.tar.gz
+working: SDL2_mixer-2.0.1.tar.gz
+working: SDL2_ttf-2.0.14.tar.gz
+working: sqlite-amalgamation-3150100.zip
+working: SDL2-2.0.4.tar.gz
+working: six-1.9.0.tar.gz
+working: master.zip
+working: master.zip
+working: rm -f /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/libs/arm64-v8a...(and 747 more)
+working: rm -f /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/libs/arm64-v8a...(and 763 more)
+working: rm -f /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/libs/arm64-v8a...(and 763 more)
+working: [armeabi-v7a] Install        : libcrystax.so => libs/armeabi-v7a/libcrystax.so
+working: install -p /opt/crystax-ndk-10.3.2/sources/crystax/libs/armeabi-v7a/thumb/libcrystax.so /home/kivy/andro...(and 98 more)
+working: /opt/crystax-ndk-10.3.2/toolchains/arm-linux-androideabi-5/prebuilt/linux-x86_64/bin/arm-linux-androidea...(and 140 more)
+working: [armeabi-v7a] Install        : libSDL2.so => libs/armeabi-v7a/libSDL2.so
+working: install -p /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/obj/local...(and 135 more)
+working: /opt/crystax-ndk-10.3.2/toolchains/arm-linux-androideabi-5/prebuilt/linux-x86_64/bin/arm-linux-androidea...(and 138 more)
+working: [armeabi-v7a] Install        : libSDL2_image.so => libs/armeabi-v7a/libSDL2_image.so
+working: install -p /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/obj/local...(and 147 more)
+working: /opt/crystax-ndk-10.3.2/toolchains/arm-linux-androideabi-5/prebuilt/linux-x86_64/bin/arm-linux-androidea...(and 144 more)
+working: [armeabi-v7a] Install        : libSDL2_mixer.so => libs/armeabi-v7a/libSDL2_mixer.so
+working: install -p /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/obj/local...(and 147 more)
+working: /opt/crystax-ndk-10.3.2/toolchains/arm-linux-androideabi-5/prebuilt/linux-x86_64/bin/arm-linux-androidea...(and 144 more)
+working: [armeabi-v7a] Install        : libSDL2_ttf.so => libs/armeabi-v7a/libSDL2_ttf.so
+working: install -p /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/obj/local...(and 143 more)
+working: /opt/crystax-ndk-10.3.2/toolchains/arm-linux-androideabi-5/prebuilt/linux-x86_64/bin/arm-linux-androidea...(and 142 more)
+working: [armeabi-v7a] Install        : libmain.so => libs/armeabi-v7a/libmain.so
+working: install -p /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/obj/local...(and 135 more)
+working: /opt/crystax-ndk-10.3.2/toolchains/arm-linux-androideabi-5/prebuilt/linux-x86_64/bin/arm-linux-androidea...(and 138 more)
+working: [armeabi-v7a] Install        : libpython3.5m.so => libs/armeabi-v7a/libpython3.5m.so
+working: install -p /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3crystax/obj/local...(and 147 more)
+working: ['', '/usr/local/lib/python3.5/dist-packages', '/usr/lib/python3/dist-packages', '/usr/lib/python3.5/dis...(and 235 more) cwd is /home/kivy/android/platform/build/build/other_builds/kivy-python3crystax-sdl2/armeabi-v7a/kivy
+working: Using distutils
+working: Environ change use_sdl2 -> True
+working: Cython check avoided.
+working: Using this graphics system: OpenGL ES 2
+working: SDL2 found via pkg-config
+working: SDL2: found SDL header at /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-python3cr...(and 27 more)
+working: SDL2: found SDL_mixer header at /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-pyt...(and 38 more)
+working: SDL2: found SDL_ttf header at /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-pytho...(and 32 more)
+working: SDL2: found SDL_image header at /home/kivy/android/platform/build/build/bootstrap_builds/sdl2_gradle-pyt...(and 38 more)
+working: fatal: Not a git repository (or any parent up to mount point /home/kivy)
+working: Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+working:  /usr/lib/python3.5/distutils/dist.py:261: UserWarning: Unknown distribution option: 'extra_requires'
+working:    warnings.warn(msg)
+working:  /usr/lib/python3.5/distutils/dist.py:261: UserWarning: Unknown distribution option: 'install_requires'
+working:    warnings.warn(msg)
+working:  /usr/lib/python3.5/distutils/dist.py:261: UserWarning: Unknown distribution option: 'setup_requires'
+working:    warnings.warn(msg)
+working:  /usr/lib/python3.5/distutils/dist.py:261: UserWarning: Unknown distribution option: 'dependency_links'
+working:    warnings.warn(msg)
+working: running build_ext
+working: Build configuration is:
+working:  * use_rpi = 0
+working:  * use_mali = 0
+working:  * use_egl = 0
+working:  * use_opengl_es2 = 1
+working:  * use_opengl_mock = 0
+working:  * use_sdl2 = 1
+working:  * use_ios = 0
+working:  * use_mesagl = 0
+working:  * use_x11 = 0
+working:  * use_wayland = 0
+working:  * use_gstreamer = 0
+working:  * use_avfoundation = 0
+working:  * use_osx_frameworks = 0
+working:  * debug_gl = 0
+working:  * debug = False
+working: warning: kivy/graphics/common.pxi:9:4: 'const_char_ptr' redeclared
+working: Error compiling Cython file:
+working: ------------------------------------------------------------
+working: ...
+working: from kivy.config import Config
+working: from kivy.base import stopTouchApp, EventLoop, ExceptionManager
+working: from kivy.utils import platform
+working: from os import environ
+working: from window_info cimport WindowInfoX11
+working: ^
+working: ------------------------------------------------------------
+working: kivy/core/window/window_x11.pyx:18:0: 'kivy/core/window/window_info/WindowInfoX11.pxd' not found
+working: Error compiling Cython file:
+working: ------------------------------------------------------------
+working: ...
+working: cdef extern int x11_create_window(int width, int height, int x, int y, \\
+working:         int resizable, int fullscreen, int border, int above, int CWOR, char *title)
+working: cdef extern void x11_gl_swap()
+working: cdef extern void x11_set_title(char *title)
+working: cdef extern int x11_idle()
+working: cdef extern Display *x11_get_display()
+working:            ^
+working: ------------------------------------------------------------
+working: kivy/core/window/window_x11.pyx:69:12: 'Display' is not a type identifier
+working: Error compiling Cython file:
+working: ------------------------------------------------------------
+working: ...
+working:         int resizable, int fullscreen, int border, int above, int CWOR, char *title)
+working: cdef extern void x11_gl_swap()
+working: cdef extern void x11_set_title(char *title)
+working: cdef extern int x11_idle()
+working: cdef extern Display *x11_get_display()
+working: cdef extern Window x11_get_window()
+working:            ^
+working: ------------------------------------------------------------
+working: kivy/core/window/window_x11.pyx:70:12: 'Window' is not a type identifier
+working: Error compiling Cython file:
+working: ------------------------------------------------------------
+working: ...
+working:         self.system_size = size
+working:         super(WindowX11, self).create_window()
+working:         self._unbind_create_window()
+working:     def get_window_info(self):
+working:         cdef WindowInfoX11 window_info = WindowInfoX11()
+working:             ^
+working: ------------------------------------------------------------
+working: kivy/core/window/window_x11.pyx:221:13: 'WindowInfoX11' is not a type identifier
+working: Error compiling Cython file:
+working: ------------------------------------------------------------
+working: ...
+working:         self.system_size = size
+working:         super(WindowX11, self).create_window()
+working:         self._unbind_create_window()
+working:     def get_window_info(self):
+working:         cdef WindowInfoX11 window_info = WindowInfoX11()
+working:                                         ^
+working: ------------------------------------------------------------
+Command failed: /usr/local/bin/python -m pythonforandroid.toolchain create --dist_name=tasks --bootstrap=sdl2 --requirements=python3crystax,kivy==master,git+https://gitlab.com/kivymd/KivyMD.git,sqlite3,peewee,pillow --arch armeabi-v7a --copy-libs --color=always --storage-dir="/home/kivy/android/platform/build"
+
+#
+# Buildozer failed to execute the last command
+# The error might be hidden in the log above this error
+# Please read the full log, and search for it before
+# raising an issue with buildozer itself.
+# In case of a bug report, please add a full log with log_level = 2
