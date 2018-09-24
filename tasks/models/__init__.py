@@ -1,3 +1,4 @@
+# coding= utf-8
 from peewee import SqliteDatabase, Model, CharField, DateField, BooleanField
 
 

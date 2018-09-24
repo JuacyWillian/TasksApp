@@ -1,3 +1,4 @@
+# coding: utf-8
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import ListProperty, StringProperty
@@ -54,7 +55,7 @@ Builder.load_string("""
             webbrowser.open(args[1])
 
     AsyncImage:
-        source: root.avatar if root.avatar else 'data/image/avatar_default.jpg'
+        source: root.avatar if root.avatar else 'assets/image/avatar_default.jpg'
         pos: 25, 75
         size_hint: None, None
         size: 100, 100
@@ -85,7 +86,7 @@ class NavigationDrawerHeader(
     subtitle = StringProperty('')
     subtitle_color = ListProperty([1, 1, 1, 1])
 
-    background_image = StringProperty('data/image/navHeader_bg.jpg')
+    background_image = StringProperty(u'assets/image/navHeader_bg.jpg')
     background_color = ListProperty([0, 0, 0, 1])
 
     avatar = StringProperty('')
@@ -94,4 +95,4 @@ class NavigationDrawerHeader(
     def __init__(self, **kw):
         super(NavigationDrawerHeader, self).__init__(**kw)
         self.title = App.get_running_app().get_application_name()
-        self.subtitle = 'juacy.willian@gmail.com'
+        self.subtitle = u'juacy.willian@gmail.com'

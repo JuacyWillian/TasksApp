@@ -1,4 +1,6 @@
+# coding: utf-8
 from tasks import TasksApp
+
 try:
     import kivy
     kivy.require('1.10.1')

@@ -1,3 +1,4 @@
+# coding= utf-8
 from kivy.lang import Builder
 from kivy.properties import StringProperty
 from kivymd.button import MDIconButton
@@ -16,19 +17,20 @@ class MDIcon(MDLabel):
     icon = StringProperty('')
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(MDIcon, self).__init__(**kwargs)
 
-        self.font_style: 'Icon'
+        self.font_style = 'Icon'
 
     def on_icon(self, instance, value):
-        self.text: u"{}".format(md_icons[root.icon])
+        self.text = u"{}".format(md_icons[root.icon])
         return True
 
 
 class IconLeftSampleWidget(ILeftBody, MDIconButton):
     def __init__(self, task, **kwargs):
-        super().__init__(**kwargs)
-        self.icon = f"checkbox-{'marked' if task.finished else 'blank'}-outline"
+        super(IconLeftSampleWidget, self).__init__(**kwargs)
+        self.icon = "checkbox-" + \
+            ('marked' if task.finished else 'blank') + "-outline"
 
 
 class IconRightSampleWidget(IRightBodyTouch, MDIconButton):

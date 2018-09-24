@@ -1,3 +1,4 @@
+# coding= utf-8
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivymd.list import MDList, TwoLineIconListItem
@@ -16,12 +17,12 @@ Builder.load_string("""
 class TaskListItem(TwoLineIconListItem):
     item = ObjectProperty(None)
 
-    def __init__(self, task: Task, **kwargs):
+    def __init__(self, task, **kwargs):
         super(TaskListItem, self).__init__(**kwargs)
 
         self.item = task
         self.text = task.title
-        self.secondary_text = f"{task.date}{10*' '}{task.tag}"
+        self.secondary_text = u"" + unicode(task.date) + (" " * 10) + task.tag
         self.add_widget(IconLeftSampleWidget(task))
 
     def get_item(self, ):

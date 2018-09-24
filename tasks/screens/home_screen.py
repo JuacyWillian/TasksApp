@@ -1,3 +1,4 @@
+# coding= utf-8
 from datetime import datetime
 from enum import Enum
 
@@ -51,7 +52,7 @@ class HomeScreen(BaseScreen):
         Clock.schedule_once(self.load_tasks)
         tasklist = self.ids.task_list
         tasklist.on_selected_item = self.show_menu
-        self.toolbar: Toolbar = self.app.root.ids.toolbar
+        self.toolbar = self.app.root.ids.toolbar
 
     def on_toolbar(self, *args):
         self.toolbar.title = self.app.get_application_name()
@@ -59,7 +60,8 @@ class HomeScreen(BaseScreen):
         self.toolbar.right_action_items = [
             ['plus', lambda x: self.app.goto(SCREENS_TYPE.EDIT)],
             # ['dots-vertical', self.show_tb_menu]
-            ['information-outline', lambda x: self.app.goto(SCREENS_TYPE.ABOUT)]
+            ['information-outline',
+                lambda x: self.app.goto(SCREENS_TYPE.ABOUT)]
         ]
 
     def show_tb_menu(self, button):
@@ -94,7 +96,7 @@ class HomeScreen(BaseScreen):
         self.tasks_list = []
         self.tasks_list = Task.select().order_by(Task.date)
 
-    def show_menu(self, item: TaskListItem):
+    def show_menu(self, item):
         _item = item.get_item()
         menu_items = [
             {'viewclass': 'MDMenuItem', 'text': 'edit',
@@ -107,12 +109,12 @@ class HomeScreen(BaseScreen):
 
         MDDropdownMenu(items=menu_items, width_mult=4).open(item)
 
-    def remove_task(self, task: Task):
+    def remove_task(self, task):
         with db:
             task.delete_instance()
         self.load_tasks()
 
-    def mark_as_finished(self, task: Task):
+    def mark_as_finished(self, task):
         with db:
             task.finished = True
             task.save()

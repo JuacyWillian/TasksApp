@@ -1,3 +1,4 @@
+# coding= utf-8
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.lang import Builder
@@ -47,14 +48,14 @@ Builder.load_string("""
                 size_hint_y: None
                 height: self.texture_size[1]
                 font_style: 'Subhead'
-                text: f'v{app.version}'
+                text: u'v'+app.version
                 halign: 'center'
 
             MDLabel:
                 size_hint_y: None
                 height: self.texture_size[1]
                 font_style: 'Subhead'
-                text: f'{app.description}'
+                text: unicode(app.description)
                 halign: 'justify'
                 padding: 10, 10
 
@@ -70,7 +71,7 @@ Builder.load_string("""
                     webbrowser.open(args[1])
 
             MDLabel:
-                text: f'website: [ref={app.website}]{app.website}[/ref]'
+                text: 'website: [ref='+app.website+']'+app.website+'[/ref]'
                 markup: True
                 size_hint_y: None
                 height: self.texture_size[1]

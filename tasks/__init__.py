@@ -1,3 +1,4 @@
+# coding= utf-8
 from enum import Enum
 
 from kivy.app import App
@@ -14,7 +15,7 @@ class TasksApp(App):
     theme_cls = ThemeManager()
     theme_cls.primary_palette = 'Teal'
 
-    logo = StringProperty('data/image/logo.png')
+    logo = StringProperty(u'assets/image/logo.png')
     version = StringProperty('')
     description = StringProperty('')
     developers = ListProperty([])
@@ -25,15 +26,15 @@ class TasksApp(App):
         with db:
             db.create_tables(table_list)
 
-        self.logo = 'data/image/logo.png'
-        self.description = '''Tasks é um aplicativo simples que ajuda o usuário a organizar o seu dia-a-dia listando as tarefas a serem realizadas e as que já foram completadas.
+        self.logo = u'assets/image/logo.png'
+        self.description = u'''Tasks é um aplicativo simples que ajuda o usuário a organizar o seu dia-a-dia listando as tarefas a serem realizadas e as que já foram completadas.
 
         O aplicativo foi construido usando Python como linguagem de programação, Kivy como Framework GUI multiplataforma, KivyMD como tema de acordo com os padrões do Material Design do Google e Peewee para facilitar o acesso ao banco de dados SQLite.'''
-        self.version = '0.01'
+        self.version = u'0.01'
         self.developers = [
-            ('Juacy Willian', 'http://twitter.com/juacywillian'),
+            (u'Juacy Willian', u'http://twitter.com/juacywillian'),
         ]
-        self.website = 'http://juacywillian.github.io/tasks'
+        self.website = u'http://juacywillian.github.io/tasks'
 
     def build(self):
         self.goto(SCREENS_TYPE.HOME)
@@ -42,7 +43,7 @@ class TasksApp(App):
     def goto(self, screenType, **kwargs):
         if not isinstance(screenType, Enum):
             raise RuntimeError(
-                "'screenType' param  must be a 'SCREEN_TYPE' instance.")
+                u"'screenType' param  must be a 'SCREEN_TYPE' instance.")
 
         screen = SCREEN_LIST[screenType](**kwargs)
         self.root.ids.manager.switch_to(screen)

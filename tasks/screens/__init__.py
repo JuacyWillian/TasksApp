@@ -1,3 +1,4 @@
+# coding= utf-8
 from enum import Enum
 from kivy.app import App
 from kivy.lang import Builder
@@ -13,7 +14,7 @@ class BaseScreen(Screen):
     toolbar = ObjectProperty(None)
 
     def __init__(self, **kwargs):
-        super().__init__(**kwargs)
+        super(BaseScreen, self).__init__(**kwargs)
 
     def on_pre_enter(self, *args):
         super(BaseScreen, self).on_pre_enter(*args)

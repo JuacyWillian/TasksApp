@@ -1,6 +1,8 @@
+# coding= utf-8
 import re
 from datetime import date, datetime
 import calendar
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
@@ -130,31 +132,33 @@ class TaskEditScreen(BaseScreen):
             padding=(10, 10),
             theme_text_color='Error'
         )
-        self.dialog = MDDialog(
+        dialog = MDDialog(
             title='Errors',
             content=content,
             size_hint=(.75, .5))
-        self.dialog.add_action_button('close', self.dialog.dismiss)
-        self.dialog.open()
+        dialog.add_action_button('close', dialog.dismiss)
+        dialog.open()
 
     def show_date_picker(self, date=""):
         def set_previous_date(date):
             self.ids.task_date.text = str(date)
             try:
-                self.dialog.dismiss()
+                dialog.dismiss()
             except:
                 pass
-            self.dialog = None
+            # dialog = None
 
-        self.dialog = MDDatePicker(
+        dialog = MDDatePicker(
             set_previous_date, firstweekday=calendar.SUNDAY,
-            auto_dismiss=False).open()
+            auto_dismiss=False)
 
         try:
             year, month, day = [int(i) for i in date.split('-')]
-            self.dialog.set_date()
+            dialog.set_date()
         except:
             pass
+        finally:
+            dialog.open()
 
     def edit_task(self, **values):
         with db:

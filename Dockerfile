@@ -37,7 +37,8 @@ RUN apt-get update && apt-get install -y -q \
     libpangoxft-1.0-0:i386 \
     libidn11:i386 \
     zlib1g:i386 \
-    wget
+    wget \
+    vim
 
 RUN pip install --trusted-host pypi.python.org -r requirements-INSTALL-FIRST.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
