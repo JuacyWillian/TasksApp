@@ -1,0 +1,6 @@
+cython==0.28.2
+Pillow==5.1.0
+Kivy==1.10.1
+git+https://github.com/JuacyWillian/kivymd-updates.git
+peewee
+enum34
