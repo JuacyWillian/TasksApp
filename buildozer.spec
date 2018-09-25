@@ -2,7 +2,7 @@
 
 
 title = Tasks
-version = 0.0.6
+version = 0.0.7
 package.name = tasks
 package.domain = io.github.juacywillian
 
@@ -13,7 +13,7 @@ source.exclude_dirs = tests, bin
 presplash.filename = %(source.dir)s/assets/image/presplash.png
 icon.filename = %(source.dir)s/assets/image/icon.png
 
-requirements = python,kivy,git+https://github.com/JuacyWillian/kivymd-updates.git,peewee,enum34,sqlite3,pysdl2
+requirements = python,kivy,git+https://github.com/JuacyWillian/kivymd-updates.git,peewee,enum34,sqlite3
 
 orientation = portrait
 fullscreen = 0
