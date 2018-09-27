@@ -20,7 +20,7 @@ Builder.load_string("""
 #:import MDLabel kivymd.label
 
 <TaskEditScreen>:
-    name: "new_task"
+    name: "new_task" if not self.task else "edit_task"
     ScrollView:
         do_scroll_x: False
         BoxLayout:
