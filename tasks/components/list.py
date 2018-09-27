@@ -22,7 +22,11 @@ class TaskListItem(TwoLineIconListItem):
 
         self.item = task
         self.text = task.title
-        self.secondary_text = u"" + unicode(task.date) + (" " * 10) + task.tag
+        try:
+            secondary_text = u"" + unicode(task.date) + (" " * 10) + task.tag
+        except:
+            secondary_text = u"" + str(task.date) + (" " * 10) + task.tag
+        self.secondary_text = secondary_text
         self.add_widget(IconLeftSampleWidget(task))
 
     def get_item(self, ):
