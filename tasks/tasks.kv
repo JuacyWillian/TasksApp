@@ -1,40 +1,9 @@
 #:kivy 1.10.1
 #:import hexColor kivy.utils.get_color_from_hex
 
-#:import NavigationLayout kivymd.navigationdrawer
-#:import MDNavigationDrawer kivymd.navigationdrawer
-#:import NavigationDrawerIconButton kivymd.navigationdrawer
 #:import Toolbar kivymd.toolbar
 
-#:import NavigationDrawerHeader tasks.components
 
-
-<NavigationDrawerHeader>:
-    title: app.get_application_name()
-    # title_color: ''
-
-    subtitle: '[ref=http://juacywillian.github.io/tasks]official site.[/ref]'
-    # subtitle_color: ''
-
-    background_image: ''
-    background_color: hexColor("#286654")
-
-    # avatar: ''
-    # avatar_circle_color: ''
-
-
-# NavigationLayout:
-#     id: nav_layout
-#     MDNavigationDrawer:
-#         id: drawer
-
-#         NavigationDrawerHeader:
-#             title: app.get_application_name()
-
-#         NavigationDrawerIconButton:
-#             icon: 'home'
-#             text: 'Home'
-#             on_release: manager.current = 'home'
 BoxLayout:
     orientation: 'vertical'
     Toolbar:
