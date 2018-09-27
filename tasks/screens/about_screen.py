@@ -15,6 +15,7 @@ Builder.load_string("""
 #:import MDLabel kivymd.label
 
 <AboutScreen>:
+    name: 'about'
     ScrollView:
         do_scroll_x: False
         BoxLayout:
@@ -55,7 +56,7 @@ Builder.load_string("""
                 size_hint_y: None
                 height: self.texture_size[1]
                 font_style: 'Subhead'
-                text: unicode(app.description)
+                text: app.description
                 halign: 'justify'
                 padding: 10, 10
 
