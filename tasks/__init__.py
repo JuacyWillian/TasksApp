@@ -42,7 +42,7 @@ class TasksApp(App):
 
     def goto(self, screenType, **kwargs):
         if not isinstance(screenType, Enum):
-            raise RuntimeError(
+            raise TypeError(
                 u"'screenType' param  must be a 'SCREEN_TYPE' instance.")
 
         screen = SCREEN_LIST[screenType](**kwargs)
