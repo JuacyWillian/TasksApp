@@ -24,6 +24,7 @@ class AboutTestCase(unittest.TestCase):
         screen = self.app.root.ids.manager.current_screen
         self.assertIsInstance(screen, AboutScreen)
 
-    def test_toolbar_title(self, ): pass
+    def test_toolbar_title(self, ):
+        self.assertEqual(self.toolbar.title, 'About')
 
     def test_toolbar_left_action_items(self, ): pass
