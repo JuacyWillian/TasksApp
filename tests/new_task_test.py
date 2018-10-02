@@ -1,10 +1,18 @@
 import unittest
+from datetime import datetime
 
+from kivy.app import App
 from kivy.clock import Clock
+from kivy.uix.button import Button
+from kivymd.textfields import MDTextField
+from kivymd.selectioncontrols import MDCheckbox
 
 from tasks import TasksApp
 from tasks.screens import SCREENS_TYPE
+from tasks.screens.home_screen import HomeScreen
 from tasks.screens.task_edit_screen import TaskEditScreen
+
+from tests.utils import get_toolbar_button, get_screen_element
 
 
 class NewTaskTestCase(unittest.TestCase):
@@ -21,10 +29,32 @@ class NewTaskTestCase(unittest.TestCase):
         self.assertEqual(screen, 'new_task')
 
     def test_new_task_type(self, ):
-        # self.app.goto(SCREENS_TYPE.EDIT)
         screen = self.app.root.ids.manager.current_screen
         self.assertIsInstance(screen, TaskEditScreen)
 
-    def test_toolbar_title(self, ): pass
+    def test_if_elements_exists(self, ):
+        self.assertIsNotNone(get_screen_element(self.app, 'task_name'))
+        self.assertIsNotNone(get_screen_element(self.app, 'task_tag'))
+        self.assertIsNotNone(get_screen_element(self.app, 'task_finished'))
+        self.assertIsNotNone(get_screen_element(self.app, 'task_date'))
 
-    def test_toolbar_left_action_items(self, ): pass
+    def test_elements_type(self, ):
+        self.assertIsInstance(get_screen_element(
+            self.app, 'task_name'), MDTextField)
+        self.assertIsInstance(get_screen_element(
+            self.app, 'task_tag'), MDTextField)
+        self.assertIsInstance(get_screen_element(
+            self.app, 'task_finished'), MDCheckbox)
+        self.assertIsInstance(get_screen_element(
+            self.app, 'task_date'), MDTextField)
+
+    def test_save_task(self, ):
+        get_screen_element(self.app, 'task_name').text = 'hola'
+        get_screen_element(self.app, 'task_tag').text = 'mundo'
+        get_screen_element(self.app, 'task_finished').active = True
+        get_screen_element(self.app, 'task_date').text = str(
+            datetime.now().date())
+
+        self.app.root.ids.manager.current_screen.save_task()
+
+        self.assertIsInstance(self.app.root.ids.manager.current_screen, HomeScreen)

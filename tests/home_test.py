@@ -3,9 +3,7 @@ import unittest
 from kivy.clock import Clock
 
 from tasks import TasksApp
-from tasks.screens import SCREENS_TYPE
 from tasks.screens.home_screen import HomeScreen
-from tasks.screens.task_edit_screen import TaskEditScreen
 
 
 class HomeTestCase(unittest.TestCase):
@@ -16,24 +14,18 @@ class HomeTestCase(unittest.TestCase):
 
         self.toolbar = self.app.root.ids.toolbar
 
+
     def test_home_type(self, ):
-        screen = self.app.root.ids.manager.current_screen
-        self.assertIsInstance(screen, HomeScreen)
+        self.assertIsInstance(self.app.root.ids.manager.current_screen, HomeScreen)
 
     def test_home_screen_name(self, ):
-        screen = self.app.root.ids.manager.current
-        self.assertEqual(screen, 'home')
-
-    def test_toolbar_title(self,):
-        self.assertEqual(self.toolbar.title, 'Tasks')
+        self.assertEqual(self.app.root.ids.manager.current, 'home')
 
     def test_toolbar_right_action_items(self, ):
-        r_items = self.toolbar.right_action_items
-        self.assertEqual(len(r_items), 2)
+        self.assertEqual(len(self.toolbar.right_action_items), 2)
 
     def test_plus_button_on_toolbar(self, ):
-        btn = self.__get_toolbar_button('plus')
-        self.assertIsNotNone(btn)
+        self.assertIsNotNone(self.__get_toolbar_button('plus'))
 
     def __get_toolbar_button(self, icon):
         right_actions = self.toolbar.ids.right_actions.children
@@ -42,20 +34,15 @@ class HomeTestCase(unittest.TestCase):
                 return btn
 
     def test_plus_button_action(self, ):
-        plus_btn = self.__get_toolbar_button('plus')
-        plus_btn.dispatch('on_release')
-        screen = self.app.root.ids.manager.current
-        self.assertEqual(screen, 'new_task')
+        self.__get_toolbar_button('plus').dispatch('on_release')
+        self.assertEqual(self.app.root.ids.manager.current, 'new_task')
 
     def test_about_button_action(self, ):
-        btn = self.__get_toolbar_button('information-outline')
-        btn.dispatch('on_release')
-        screen = self.app.root.ids.manager.current
-        self.assertEqual(screen, 'about')
+        self.__get_toolbar_button('information-outline').dispatch('on_release')
+        self.assertEqual(self.app.root.ids.manager.current, 'about')
 
     def test_info_button_on_toolbar(self, ):
-        btn = self.__get_toolbar_button('information-outline')
-        self.assertIsNotNone(btn)
+        self.assertIsNotNone(self.__get_toolbar_button('information-outline'))
 
 
 class HomeToolbarTestCase(unittest.TestCase):

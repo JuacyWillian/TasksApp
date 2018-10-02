@@ -4,9 +4,6 @@ from kivy.clock import Clock
 from kivy.uix.boxlayout import BoxLayout
 
 from tasks import TasksApp
-from tasks.screens import SCREENS_TYPE
-from tasks.screens.home_screen import HomeScreen
-from tasks.screens.task_edit_screen import TaskEditScreen
 
 
 class TasksAppTestCase(unittest.TestCase):
@@ -14,6 +11,7 @@ class TasksAppTestCase(unittest.TestCase):
         self.app = TasksApp()
         Clock.schedule_interval(lambda *x: self.app.stop(), 0.000001)
         self.app.run()
+
 
     def test_app_infos(self, ):
         self.assertEqual(self.app.get_application_name(), 'Tasks')

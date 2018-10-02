@@ -52,7 +52,9 @@ class HomeScreen(BaseScreen):
         Clock.schedule_once(self.load_tasks)
         tasklist = self.ids.task_list
         tasklist.on_selected_item = self.show_menu
+        # self.app.root.replace()
         self.toolbar = self.app.root.ids.toolbar
+        self.toolbar =  Toolbar(id='toolbar')
 
     def on_toolbar(self, *args):
         self.toolbar.title = self.app.get_application_name()

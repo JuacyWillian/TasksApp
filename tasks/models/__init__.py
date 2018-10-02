@@ -1,8 +1,10 @@
 # coding= utf-8
+import os
 from peewee import SqliteDatabase, Model, CharField, DateField, BooleanField
 
 
-db = SqliteDatabase('tasks.db')
+database_uri = os.environ.get('DATABASE_URI', 'tasks.db')
+db = SqliteDatabase(database_uri)
 
 
 class BaseModel(Model):
@@ -23,3 +25,6 @@ class Task(BaseModel):
 
 
 table_list = [Task, Person]
+def init_db():
+    with db:
+        db.create_tables(table_list)

@@ -6,7 +6,7 @@ from kivy.lang import Builder
 from kivy.properties import StringProperty, ListProperty
 from kivymd.theming import ThemeManager
 
-from tasks.models import db, table_list
+from tasks.models import init_db
 from tasks.screens import SCREENS_TYPE, SCREEN_LIST
 from tasks.screens.home_screen import HomeScreen
 
@@ -23,8 +23,7 @@ class TasksApp(App):
 
     def __init__(self, **kwargs):
         super(TasksApp, self).__init__(**kwargs)
-        with db:
-            db.create_tables(table_list)
+        init_db()
 
         self.logo = u'assets/image/logo.png'
         self.description = u'''Tasks é um aplicativo simples que ajuda o usuário a organizar o seu dia-a-dia listando as tarefas a serem realizadas e as que já foram completadas.

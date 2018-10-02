@@ -6,6 +6,7 @@ from kivy.properties import ListProperty, ObjectProperty, StringProperty
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import FadeTransition
 from kivymd.label import MDLabel
+from kivymd.toolbar import Toolbar
 
 from tasks.screens import SCREENS_TYPE, BaseScreen
 
@@ -94,6 +95,7 @@ class AboutScreen(BaseScreen):
     def on_enter(self, ):
         super(AboutScreen, self).on_enter()
         self.toolbar = self.app.root.ids.toolbar
+        self.toolbar =  Toolbar(id='toolbar')
 
     def on_toolbar(self, *args):
         self.toolbar.title = 'About'

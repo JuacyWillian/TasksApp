@@ -9,6 +9,7 @@ from kivy.properties import ObjectProperty
 from kivymd.date_picker import MDDatePicker
 from kivymd.dialog import MDDialog
 from kivymd.label import MDLabel
+from kivymd.toolbar import Toolbar
 
 from tasks.models import Task, db
 from tasks.screens import SCREENS_TYPE, BaseScreen
