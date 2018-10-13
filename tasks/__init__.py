@@ -44,5 +44,5 @@ class TasksApp(App):
             raise TypeError(
                 u"'screenType' param  must be a 'SCREEN_TYPE' instance.")
 
-        screen = SCREEN_LIST[screenType](**kwargs)
+        screen = SCREEN_LIST[screenType](self, **kwargs)
         self.root.ids.manager.switch_to(screen)

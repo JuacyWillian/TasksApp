@@ -11,6 +11,8 @@ from kivymd.dialog import MDDialog
 from kivymd.label import MDLabel
 from kivymd.toolbar import Toolbar
 
+from kivymd.textfields import MDTextField
+
 from tasks.models import Task, db
 from tasks.screens import SCREENS_TYPE, BaseScreen
 
@@ -56,7 +58,7 @@ Builder.load_string("""
             MDTextField:
                 id: task_date
                 hint_text: "Task Date"
-                on_focus: root.show_date_picker(self.text)
+                on_focus: root.show_date_picker(self)
 
             MDTextField:
                 id: task_tag
@@ -68,9 +70,9 @@ class TaskEditScreen(BaseScreen):
     task = ObjectProperty(None)
     dialog = ObjectProperty(None)
 
-    def __init__(self, task=None, **kwargs):
+    def __init__(self, app, task=None, **kwargs):
         super(TaskEditScreen, self).__init__(**kwargs)
-        self.app = App.get_running_app()
+        self.app = app
 
         if task:
             self.task = task
@@ -140,26 +142,28 @@ class TaskEditScreen(BaseScreen):
         dialog.add_action_button('close', dialog.dismiss)
         dialog.open()
 
-    def show_date_picker(self, date=""):
-        def set_previous_date(date):
-            self.ids.task_date.text = str(date)
+    def show_date_picker(self, instance):
+        if instance.focus:
+            date = instance.text
+
+            def set_previous_date(date):
+                self.ids.task_date.text = str(date)
+                try:
+                    dialog.dismiss()
+                except:
+                    pass
+
+            dialog = MDDatePicker(
+                set_previous_date, firstweekday=calendar.SUNDAY,
+                auto_dismiss=False)
+
             try:
-                dialog.dismiss()
+                year, month, day = [int(i) for i in date.split('-')]
+                dialog.set_date(year, month, day)
             except:
                 pass
-            # dialog = None
-
-        dialog = MDDatePicker(
-            set_previous_date, firstweekday=calendar.SUNDAY,
-            auto_dismiss=False)
-
-        try:
-            year, month, day = [int(i) for i in date.split('-')]
-            dialog.set_date()
-        except:
-            pass
-        finally:
-            dialog.open()
+            finally:
+                dialog.open()
 
     def edit_task(self, **values):
         with db:

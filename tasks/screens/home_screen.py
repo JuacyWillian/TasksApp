@@ -42,9 +42,9 @@ class HomeScreen(BaseScreen):
     filter_by = OptionProperty(
         'pending', options=['none', 'pending', 'finished'])
 
-    def __init__(self, **kwargs):
+    def __init__(self, app, **kwargs):
         super(HomeScreen, self).__init__(**kwargs)
-        self.app = App.get_running_app()
+        self.app = app
 
     def on_enter(self, ):
         super(HomeScreen, self).on_enter()
@@ -54,7 +54,7 @@ class HomeScreen(BaseScreen):
         tasklist.on_selected_item = self.show_menu
         # self.app.root.replace()
         self.toolbar = self.app.root.ids.toolbar
-        self.toolbar =  Toolbar(id='toolbar')
+        self.toolbar = Toolbar(id='toolbar')
 
     def on_toolbar(self, *args):
         self.toolbar.title = self.app.get_application_name()
@@ -65,18 +65,6 @@ class HomeScreen(BaseScreen):
             ['information-outline',
                 lambda x: self.app.goto(SCREENS_TYPE.ABOUT)]
         ]
-
-    def show_tb_menu(self, button):
-        menu_items = [
-            # {'viewclass': 'MDMenuItem', 'text': 'sort',
-            #  'on_release': lambda: self.show_sort_menu()},
-            # {'viewclass': 'MDMenuItem', 'text': 'filter',
-            #  'on_release': lambda: self.show_filter_menu()},
-            {'viewclass': 'MDMenuItem', 'text': 'about',
-             'on_release': lambda: self.app.goto(SCREENS_TYPE.ABOUT)},
-        ]
-
-        MDDropdownMenu(items=menu_items, width_mult=4).open(button)
 
     def show_filter_menu(self, ):
         pass
@@ -102,11 +90,11 @@ class HomeScreen(BaseScreen):
         _item = item.get_item()
         menu_items = [
             {'viewclass': 'MDMenuItem', 'text': 'edit',
-             'on_release': lambda: self.app.goto(SCREENS_TYPE.EDIT, task=_item)},
+             'callback': lambda x: self.app.goto(SCREENS_TYPE.EDIT, task=_item)},
             {'viewclass': 'MDMenuItem', 'text': 'remove',
-             'on_release': lambda: self.remove_task(_item)},
+             'callback': lambda x: self.remove_task(_item)},
             {'viewclass': 'MDMenuItem', 'text': 'mark as finished',
-             'on_release': lambda: self.mark_as_finished(_item)},
+             'callback': lambda x: self.mark_as_finished(_item)},
         ]
 
         MDDropdownMenu(items=menu_items, width_mult=4).open(item)
