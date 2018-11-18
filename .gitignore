@@ -58,9 +58,11 @@ docs/_build/
 
 # vscode
 .vscode/
+.vscode/*
 
 # pycharm
 .idea/
+.idea/*
 
 # sqlite
 *.db
