@@ -38,10 +38,14 @@ O aplicativo foi construido usando Python como linguagem de programação, Kivy 
 python -m pip install -r requirements.txt
 ```
 
-## Running
-
-```
+## Run application
+```bash
 python main.py
+```
+
+## Run tests
+```bash
+python -m unittest discover -v -s tests -p *test.py
 ```
 
 ## Links
