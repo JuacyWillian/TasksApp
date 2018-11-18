@@ -21,7 +21,7 @@ Builder.load_string("""
         do_scroll_x: False
         BoxLayout:
             orientation: 'vertical'
-            # padding: 10, 10
+            padding: 10, 10
             size_hint_y: None
             height: self.minimum_height
             pos_hint: {'top': 1}
@@ -50,7 +50,7 @@ Builder.load_string("""
                 size_hint_y: None
                 height: self.texture_size[1]
                 font_style: 'Subhead'
-                text: u'v'+app.version
+                text: u'Version: '+app.version
                 halign: 'center'
 
             MDLabel:
@@ -62,12 +62,11 @@ Builder.load_string("""
                 padding: 10, 10
 
             MDLabel:
-                text: '[b]Developers:[/b] \\n %s'%(", ".join(['[ref='+d[1]+']'+d[0]+'[/ref]' for d in app.developers]))
+                text: '[b]Developers:[/b] %s'%(", ".join(['[ref='+d[1]+']'+d[0]+'[/ref]' for d in app.developers]))
                 size_hint_y: None
                 height: self.texture_size[1]
                 font_style: 'Body1'
                 markup: True
-                padding: 10, 10
                 on_ref_press:
                     import webbrowser
                     webbrowser.open(args[1])
@@ -78,7 +77,6 @@ Builder.load_string("""
                 size_hint_y: None
                 height: self.texture_size[1]
                 font_style: 'Body2'
-                padding: 10, 10
                 on_ref_press:
                     import webbrowser
                     webbrowser.open(args[1])
@@ -88,14 +86,14 @@ Builder.load_string("""
 class AboutScreen(BaseScreen):
     app = ObjectProperty(None)
 
-    def __init__(self, **kwargs):
+    def __init__(self, app, **kwargs):
         super(AboutScreen, self). __init__(**kwargs)
-        self.app = App.get_running_app()
+        self.app = app
 
     def on_enter(self, ):
         super(AboutScreen, self).on_enter()
         self.toolbar = self.app.root.ids.toolbar
-        self.toolbar =  Toolbar(id='toolbar')
+        self.toolbar = Toolbar(id='toolbar')
 
     def on_toolbar(self, *args):
         self.toolbar.title = 'About'

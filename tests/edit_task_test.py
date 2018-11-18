@@ -52,6 +52,10 @@ class EditTaskTestCase(unittest.TestCase):
         self.assertEqual(get_screen_element(
             self.app, 'task_date').text, str(self.task.date))
 
-    def test_toolbar_title(self, ): self.assertTrue(False)
+    def test_toolbar_title(self, ):
+        """Testa se o titulo da toolbar é 'Edit Task'."""
+        self.assertEqual(self.app.root.ids.toolbar.title, 'Edit Task')
 
-    def test_toolbar_left_action_items(self, ): self.assertTrue(False)
+    def test_toolbar_left_action_items(self, ):
+        """Testa se a toolbar possui o botao 'salvar'."""
+        self.assertTrue(False)
