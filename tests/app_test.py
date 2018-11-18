@@ -12,7 +12,6 @@ class TasksAppTestCase(unittest.TestCase):
         Clock.schedule_interval(lambda *x: self.app.stop(), 0.000001)
         self.app.run()
 
-
     def test_app_infos(self, ):
         self.assertEqual(self.app.get_application_name(), 'Tasks')
         self.assertEqual(self.app.website,

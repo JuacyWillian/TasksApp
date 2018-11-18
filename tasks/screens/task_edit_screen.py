@@ -1,21 +1,15 @@
 # coding= utf-8
-import re
-from datetime import date, datetime
 import calendar
+from datetime import date, datetime
 
-from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import ObjectProperty
 from kivymd.date_picker import MDDatePicker
 from kivymd.dialog import MDDialog
 from kivymd.label import MDLabel
-from kivymd.toolbar import Toolbar
-
-from kivymd.textfields import MDTextField
 
 from tasks.models import Task, db
-from tasks.screens import SCREENS_TYPE, BaseScreen
-
+from tasks.screens import BaseScreen, SCREENS_TYPE
 
 Builder.load_string("""
 #:import MDTextField kivymd.textfields
@@ -77,7 +71,7 @@ class TaskEditScreen(BaseScreen):
         if task:
             self.task = task
 
-    def on_enter(self,):
+    def on_pre_enter(self, ):
         super(TaskEditScreen, self).on_enter()
         self.toolbar = self.app.root.ids.toolbar
 
@@ -131,7 +125,7 @@ class TaskEditScreen(BaseScreen):
 
     def show_error_dialog(self, errors):
         content = MDLabel(
-            text='\n\n'+'\n'.join(errors),
+            text='\n\n' + '\n'.join(errors),
             padding=(10, 10),
             theme_text_color='Error'
         )

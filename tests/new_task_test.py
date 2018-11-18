@@ -1,18 +1,15 @@
 import unittest
 from datetime import datetime
 
-from kivy.app import App
 from kivy.clock import Clock
-from kivy.uix.button import Button
-from kivymd.textfields import MDTextField
 from kivymd.selectioncontrols import MDCheckbox
+from kivymd.textfields import MDTextField
 
 from tasks import TasksApp
 from tasks.screens import SCREENS_TYPE
 from tasks.screens.home_screen import HomeScreen
 from tasks.screens.task_edit_screen import TaskEditScreen
-
-from tests.utils import get_toolbar_button, get_screen_element
+from tests.utils import get_screen_element
 
 
 class NewTaskTestCase(unittest.TestCase):

@@ -1,4 +1,3 @@
-
 def get_toolbar(app):
     return app.root.ids.toolbar
 

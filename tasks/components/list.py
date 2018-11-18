@@ -4,8 +4,6 @@ from kivy.properties import ObjectProperty
 from kivymd.list import MDList, TwoLineIconListItem
 
 from tasks.components.widgets import IconLeftSampleWidget
-from tasks.models import Task, db
-
 
 Builder.load_string("""
 <TaskList>:

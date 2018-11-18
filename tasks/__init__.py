@@ -2,8 +2,7 @@
 from enum import Enum
 
 from kivy.app import App
-from kivy.lang import Builder
-from kivy.properties import StringProperty, ListProperty
+from kivy.properties import ListProperty, StringProperty
 from kivymd.theming import ThemeManager
 
 from tasks.models import init_db

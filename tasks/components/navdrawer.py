@@ -78,8 +78,8 @@ Builder.load_string("""
 
 
 class NavigationDrawerHeader(
-        RelativeLayout, ThemableBehavior,
-        RectangularElevationBehavior, NavigationDrawerHeaderBase):
+    RelativeLayout, ThemableBehavior,
+    RectangularElevationBehavior, NavigationDrawerHeaderBase):
     title = StringProperty('')
     title_color = ListProperty([1, 1, 1, 1])
 

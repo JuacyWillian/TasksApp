@@ -30,7 +30,7 @@ class IconLeftSampleWidget(ILeftBody, MDIconButton):
     def __init__(self, task, **kwargs):
         super(IconLeftSampleWidget, self).__init__(**kwargs)
         self.icon = "checkbox-" + \
-            ('marked' if task.finished else 'blank') + "-outline"
+                    ('marked' if task.finished else 'blank') + "-outline"
 
 
 class IconRightSampleWidget(IRightBodyTouch, MDIconButton):

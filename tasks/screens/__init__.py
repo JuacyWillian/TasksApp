@@ -1,10 +1,8 @@
 # coding= utf-8
 from enum import Enum
-from kivy.app import App
-from kivy.lang import Builder
+
 from kivy.properties import ObjectProperty
 from kivy.uix.screenmanager import Screen
-from kivymd.navigationdrawer import NavigationLayout
 
 SCREENS_TYPE = Enum('Screens', 'HOME EDIT ABOUT')
 

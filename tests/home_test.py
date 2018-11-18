@@ -14,7 +14,6 @@ class HomeTestCase(unittest.TestCase):
 
         self.toolbar = self.app.root.ids.toolbar
 
-
     def test_home_type(self, ):
         self.assertIsInstance(self.app.root.ids.manager.current_screen, HomeScreen)
 

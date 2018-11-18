@@ -1,5 +1,7 @@
 import unittest
+
 from kivy.clock import Clock
+
 from tasks import TasksApp
 
 

@@ -1,26 +1,16 @@
 # coding= utf-8
-from datetime import datetime
-from enum import Enum
-
-from kivy.app import App
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.properties import *
-from kivy.uix.screenmanager import ScreenManager, SlideTransition
-from kivy.uix.scrollview import ScrollView
+from kivy.properties import ListProperty, ObjectProperty, OptionProperty
 from kivymd.menu import MDDropdownMenu
 from kivymd.toolbar import Toolbar
 
-from tasks.components.list import TaskList, TaskListItem
 from tasks.models import Task, db
-from tasks.screens import SCREENS_TYPE, BaseScreen
-from tasks.screens.about_screen import AboutScreen
-from tasks.screens.task_edit_screen import TaskEditScreen
-
+from tasks.screens import BaseScreen, SCREENS_TYPE
 
 Builder.load_string("""
 #:import MDFloatingActionButton kivymd.button
-#:import TaskList tasks.components
+#:import TaskList tasks.components.list
 
 <HomeScreen>:
     name: 'home'
@@ -57,25 +47,29 @@ class HomeScreen(BaseScreen):
         self.toolbar = Toolbar(id='toolbar')
 
     def on_toolbar(self, *args):
+        """Configure Toolbar."""
         self.toolbar.title = self.app.get_application_name()
         self.toolbar.left_action_items = []
         self.toolbar.right_action_items = [
             ['plus', lambda x: self.app.goto(SCREENS_TYPE.EDIT)],
             # ['dots-vertical', self.show_tb_menu]
             ['information-outline',
-                lambda x: self.app.goto(SCREENS_TYPE.ABOUT)]
+             lambda x: self.app.goto(SCREENS_TYPE.ABOUT)]
         ]
 
     def show_filter_menu(self, ):
+        """Show filter task menu."""
         pass
 
     def show_sort_menu(self, ):
+        """Show sort task menu."""
         pass
 
     def goto_about(self, ):
         pass
 
     def on_tasks_list(self, *args):
+        """Update task list."""
         tasklist = self.ids.task_list
         if tasklist:
             tasklist.clear_widgets()
@@ -83,10 +77,12 @@ class HomeScreen(BaseScreen):
                 tasklist.add_task(t)
 
     def load_tasks(self, *args):
+        """Load all tasks from database. sorting by task.date."""
         self.tasks_list = []
         self.tasks_list = Task.select().order_by(Task.date)
 
     def show_menu(self, item):
+        """Show selected item menu."""
         _item = item.get_item()
         menu_items = [
             {'viewclass': 'MDMenuItem', 'text': 'edit',
@@ -96,15 +92,16 @@ class HomeScreen(BaseScreen):
             {'viewclass': 'MDMenuItem', 'text': 'mark as finished',
              'callback': lambda x: self.mark_as_finished(_item)},
         ]
-
         MDDropdownMenu(items=menu_items, width_mult=4).open(item)
 
     def remove_task(self, task):
+        """Remove selected task from database."""
         with db:
             task.delete_instance()
         self.load_tasks()
 
     def mark_as_finished(self, task):
+        """Mark selected task as finished."""
         with db:
             task.finished = True
             task.save()

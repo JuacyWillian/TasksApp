@@ -1,15 +1,9 @@
 # coding= utf-8
-from kivy.app import App
-from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.properties import ListProperty, ObjectProperty, StringProperty
-from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.screenmanager import FadeTransition
-from kivymd.label import MDLabel
+from kivy.properties import ObjectProperty
 from kivymd.toolbar import Toolbar
 
-from tasks.screens import SCREENS_TYPE, BaseScreen
-
+from tasks.screens import BaseScreen, SCREENS_TYPE
 
 Builder.load_string("""
 #:import hexColor kivy.utils.get_color_from_hex
@@ -87,7 +81,7 @@ class AboutScreen(BaseScreen):
     app = ObjectProperty(None)
 
     def __init__(self, app, **kwargs):
-        super(AboutScreen, self). __init__(**kwargs)
+        super(AboutScreen, self).__init__(**kwargs)
         self.app = app
 
     def on_enter(self, ):
