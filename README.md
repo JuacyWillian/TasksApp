@@ -34,17 +34,23 @@ O aplicativo foi construido usando Python como linguagem de programação, Kivy 
 * [Kivy Install on MacOS](https://kivy.org/doc/stable/installation/installation-osx.html)
 
 #### Install Requirements
+###### Python 2
 ```
-python -m pip install -r requirements.txt
+python -m pip install -r py2_requirements.txt
+```
+
+###### python 3
+```
+python -m pip install -r py3_requirements.txt
 ```
 
 ## Run application
-```bash
+```
 python main.py
 ```
 
 ## Run tests
-```bash
+```
 python -m unittest discover -v -s tests -p *test.py
 ```
 
